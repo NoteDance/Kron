@@ -4,8 +4,6 @@
 
 The `Kron` optimizer implements the PSGD Kron algorithm, which uses Kronecker-based preconditioning to accelerate stochastic gradient descent. By maintaining a set of per-parameter preconditioners (built via Kronecker products) and updating them probabilistically during training, Kron adapts the effective gradient direction and scaling. This method is particularly useful for large models where efficient preconditioning can significantly improve convergence while managing memory consumption.
 
----
-
 **Parameters**:
 
 - **`learning_rate`** *(float, default=0.0003)*: The base step size for updating model parameters.
@@ -35,6 +33,7 @@ The `Kron` optimizer implements the PSGD Kron algorithm, which uses Kronecker-ba
 **Example Usage**:
 ```python
 import tensorflow as tf
+from kron import Kron
 
 # Instantiate the Kron optimizer with default preconditioner schedule.
 optimizer = Kron(
